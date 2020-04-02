@@ -1,0 +1,15 @@
+﻿
+Add products and amount to shoppingcart 
+
+delete items from shopping cart 
+
+make list class not static.
+
+CheckList:
+reanme labels and textboxes 
+Make class diagram
+check so that all controlls are in place
+
+
+
+
