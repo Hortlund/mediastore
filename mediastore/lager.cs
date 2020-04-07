@@ -79,39 +79,62 @@ namespace mediastore
 
         private void button3_Click(object sender, EventArgs e)
         {
+            List<Produkt> products = List.getList();
             int.TryParse(textBox2.Text, out int id);
             int.TryParse(textBox3.Text, out int price);
             int.TryParse(textBox4.Text, out int amount);
-            List.add(id, textBox1.Text, price, amount, textBox5.Text);
+
+            if(!(List.exists(id, textBox1.Text, price, amount, textBox5.Text)))
+            {
+                MessageBox.Show("Varan med varunumret finns redan, ange ett nytt");
+            }
             updateListBox();
             filehandle.writeFile();
+                
+           
             
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                
-                //List<Produkt> products = List.getList();
-                //listBox1.DataSource = null;
-                Produkt r = ((Produkt)listBox1.SelectedItem);
-                List.remove(r);
-                //listBox1.DataSource = products;
-                listBox1.DisplayMember = "Name";
-                label1.Text = "Produktnamn: ";
-                label2.Text = "Varunummer: ";
-                label3.Text = "Pris: ";
-                label4.Text = "Antal: ";
-                label10.Text = "Leverantör: ";
-                updateListBox();
-                filehandle.writeFile();
+           
 
-            }
-            catch
+            //List<Produkt> products = List.getList();
+            //listBox1.DataSource = null;
+            //DialogResult result = MessageBox.Show("Vill du verkligen ta bort produkten?", "Bekräftelse", MessageBoxButtons.YesNoCancel);
+            Produkt r = ((Produkt)listBox1.SelectedItem);
+            int amount = ((Produkt)listBox1.SelectedItem).amount;
+            if (amount != 0)
             {
 
+            
+
+                DialogResult result = MessageBox.Show("Vill du verkligen ta bort produkten?", "Bekräftelse", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    List.remove(r);
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+                else if (result == DialogResult.Cancel)
+                {
+
+                }
             }
+
+            //listBox1.DataSource = products;
+            listBox1.DisplayMember = "Name";
+            label1.Text = "Produktnamn: ";
+            label2.Text = "Varunummer: ";
+            label3.Text = "Pris: ";
+            label4.Text = "Antal: ";
+            label10.Text = "Leverantör: ";
+            updateListBox();
+            filehandle.writeFile();
+
+            
 
 
         }

@@ -34,25 +34,31 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -112,6 +118,16 @@
             this.panel2.Size = new System.Drawing.Size(188, 305);
             this.panel2.TabIndex = 2;
             // 
+            // listBox2
+            // 
+            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(0, 0);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(188, 305);
+            this.listBox2.TabIndex = 0;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -130,50 +146,44 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Varukorg";
             // 
-            // listBox2
-            // 
-            this.listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(0, 0);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(188, 305);
-            this.listBox2.TabIndex = 0;
-            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(612, 363);
+            this.button1.Location = new System.Drawing.Point(531, 363);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Köp";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(693, 363);
+            this.button2.Location = new System.Drawing.Point(660, 363);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 6;
             this.button2.Text = "Ta bort produkt";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(647, 392);
+            this.button3.Location = new System.Drawing.Point(660, 392);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 23);
+            this.button3.Size = new System.Drawing.Size(95, 23);
             this.button3.TabIndex = 7;
             this.button3.Text = "Töm varukorg";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 
@@ -188,12 +198,38 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(274, 52);
+            this.groupBox1.Location = new System.Drawing.Point(186, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(251, 305);
+            this.groupBox1.Size = new System.Drawing.Size(186, 305);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produktinfo";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(67, 251);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Antal";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(108, 248);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(57, 20);
+            this.textBox1.TabIndex = 23;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(70, 274);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(95, 23);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Lägg i varukorg";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label10
             // 
@@ -240,37 +276,64 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Produktnamn: ";
             // 
-            // button4
+            // groupBox2
             // 
-            this.button4.Location = new System.Drawing.Point(150, 276);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(95, 23);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Lägg i varukorg";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Location = new System.Drawing.Point(420, 52);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(186, 305);
+            this.groupBox2.TabIndex = 25;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Varukorginfo";
             // 
-            // textBox1
+            // label11
             // 
-            this.textBox1.Location = new System.Drawing.Point(188, 250);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(57, 20);
-            this.textBox1.TabIndex = 23;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 13);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Antal: ";
             // 
-            // label7
+            // label12
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(147, 253);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 13);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "Antal";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Pris: ";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 28);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Produktnamn: ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(426, 363);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Total pris: ";
             // 
             // kassa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -291,6 +354,8 @@
             this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,5 +384,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label8;
     }
 }

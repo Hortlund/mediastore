@@ -33,7 +33,7 @@ namespace mediastore
                 {
                 try
                 {
-                    //This causes a indexoutofboundexception, but i cant seem to fix it, and it doesnt iterfeer, so supress it.
+                    //This causes a index out of bound exception, but i cant seem to fix it, and it doesnt iterfeer, so supress it.
                     //Shouldnt do it, doesnt know why it does.
                     string[] splitted = r.Split(',');
                     string idText = splitted[0];

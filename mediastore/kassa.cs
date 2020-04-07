@@ -45,20 +45,15 @@ namespace mediastore
             listBox1.DataSource = null;
             listBox1.DataSource = products;
             listBox1.DisplayMember = "Name";
-            foreach (Produkt aPart in products)
-            {
-                Console.WriteLine(aPart);
-            }
 
         }
-        private void updateShoppingCart(string amount)
+        private void updateShoppingCart()
         {
             List<Produkt> shoppingcart = List.getShoppingCart();
 
             listBox2.DataSource = null;
             listBox2.DataSource = shoppingcart;
             listBox2.DisplayMember = "Name";
-            listBox2.ValueMember = amount;
             foreach (Produkt aPart in shoppingcart)
             {
                 Console.WriteLine(aPart);
@@ -83,12 +78,87 @@ namespace mediastore
 
         }
 
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                label14.Text = "Produktnamn: " + ((Produkt)listBox2.SelectedItem).name;
+                label12.Text = "Pris: " + ((Produkt)listBox2.SelectedItem).price;
+                label11.Text = "Antal: " + ((Produkt)listBox2.SelectedItem).amount;
+            }
+            catch
+            {
+
+            }
+
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             
-            Produkt r = ((Produkt)listBox1.SelectedItem);
-            List.addShoppingCart(r);
-            updateShoppingCart(textBox1.Text);
+            if(!int.TryParse(textBox1.Text, out int amount))
+            {
+                MessageBox.Show("Ange ett antal varor att lägga till", "Information", MessageBoxButtons.OK);
+                textBox1.Text = "";
+            }
+            else
+            {
+
+                Produkt r = ((Produkt)listBox1.SelectedItem);
+                if(List.addShoppingCart(r, amount))
+                {
+                    updateListBox();
+                    updateShoppingCart();
+                    label8.Text = "Total pris: " + List.totalPrice().ToString();
+                    textBox1.Text = "";
+                }else
+                {
+                    MessageBox.Show("Finns inte nog många varor i lager, välj ett annat antal", "Information", MessageBoxButtons.OK);
+                    textBox1.Text = "";
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List.shoppingClear();
+            updateShoppingCart();
+            label8.Text = "Total pris: ";
+            try
+            {
+                label14.Text = "Produktnamn: ";
+                label12.Text = "Pris: ";
+                label11.Text = "Antal: ";
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Produkt r = ((Produkt)listBox2.SelectedItem);
+            List.shoppingRemove(r);
+            updateShoppingCart();
+            label8.Text = "Total pris: ";
+            try
+            {
+                label14.Text = "Produktnamn: ";
+                label12.Text = "Pris: ";
+                label11.Text = "Antal: ";
+            }
+            catch
+            {
+
+            }
+            updateListBox();
+            updateShoppingCart();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
