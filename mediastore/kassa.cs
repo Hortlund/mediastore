@@ -111,53 +111,90 @@ namespace mediastore
                     updateShoppingCart();
                     label8.Text = "Total pris: " + List.totalPrice().ToString();
                     textBox1.Text = "";
-                }else
+                }
+                else
                 {
-                    MessageBox.Show("Finns inte nog många varor i lager, välj ett annat antal", "Information", MessageBoxButtons.OK);
+                    MessageBox.Show("Välj ett annat antal", "Information", MessageBoxButtons.OK);
                     textBox1.Text = "";
                 }
+                    
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            List.shoppingClear();
-            updateShoppingCart();
-            label8.Text = "Total pris: ";
-            try
+            if (listBox2.Items.Count == 0)
             {
-                label14.Text = "Produktnamn: ";
-                label12.Text = "Pris: ";
-                label11.Text = "Antal: ";
+                MessageBox.Show("Varukorgen är redan tom", "Information", MessageBoxButtons.OK);
             }
-            catch
+            else
             {
+                List.shoppingClear();
+                updateListBox();
+                updateShoppingCart();
+                label8.Text = "Total pris: ";
+                try
+                {
+                    label14.Text = "Produktnamn: ";
+                    label12.Text = "Pris: ";
+                    label11.Text = "Antal: ";
+                }
+                catch
+                {
 
+                }
             }
+                
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Produkt r = ((Produkt)listBox2.SelectedItem);
-            List.shoppingRemove(r);
-            updateShoppingCart();
-            label8.Text = "Total pris: ";
-            try
+            if (listBox2.Items.Count == 0)
             {
-                label14.Text = "Produktnamn: ";
-                label12.Text = "Pris: ";
-                label11.Text = "Antal: ";
-            }
-            catch
+                MessageBox.Show("Varukorgen är redan tom", "Information", MessageBoxButtons.OK);
+            }else
             {
+                Produkt r = ((Produkt)listBox2.SelectedItem);
+                List.shoppingRemove(r);
+                updateListBox();
+                updateShoppingCart();
+                label8.Text = "Total pris: ";
+                try
+                {
+                    label14.Text = "Produktnamn: ";
+                    label12.Text = "Pris: ";
+                    label11.Text = "Antal: ";
+                }
+                catch
+                {
 
+                }
+                updateListBox();
+                updateShoppingCart();
             }
-            updateListBox();
-            updateShoppingCart();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (listBox2.Items.Count == 0)
+            {
+                MessageBox.Show("Lägg till något att köpa!", "Information", MessageBoxButtons.OK);
+            }
+            else
+            {
+                List.buy();
+                updateListBox();
+                updateShoppingCart();
+                label14.Text = "Produktnamn: ";
+                label12.Text = "Pris: ";
+                label11.Text = "Antal: ";
+                label8.Text = "Total pris: ";
+                filehandle.writeFile();
+                MessageBox.Show("Köpet genomfört!", "Information", MessageBoxButtons.OK);
+
+            }
+
 
         }
     }

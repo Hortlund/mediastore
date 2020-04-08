@@ -44,6 +44,7 @@ namespace mediastore
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Generates a null reference Exception
             try
             {
                 label1.Text = "Produktnamn: " + ((Produkt)listBox1.SelectedItem).name;
@@ -65,11 +66,7 @@ namespace mediastore
             listBox1.DataSource = null;
             listBox1.DataSource = products;
             listBox1.DisplayMember = "Name";
-            foreach (Produkt aPart in products)
-            {
-                Console.WriteLine(aPart);
-            }
-
+            
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
@@ -79,20 +76,41 @@ namespace mediastore
 
         private void button3_Click(object sender, EventArgs e)
         {
-            List<Produkt> products = List.getList();
-            int.TryParse(textBox2.Text, out int id);
-            int.TryParse(textBox3.Text, out int price);
-            int.TryParse(textBox4.Text, out int amount);
-
-            if(!(List.exists(id, textBox1.Text, price, amount, textBox5.Text)))
-            {
-                MessageBox.Show("Varan med varunumret finns redan, ange ett nytt");
-            }
-            updateListBox();
-            filehandle.writeFile();
-                
-           
             
+            List<Produkt> products = List.getList();
+            if(textBox1.Text == "")
+            {
+                MessageBox.Show("Ange ett produktnamn!", "Information", MessageBoxButtons.OK);
+            }
+            else if (!int.TryParse(textBox2.Text, out int id))
+            {
+                MessageBox.Show("Ange ett id-nummer i siffror", "Information", MessageBoxButtons.OK);
+                if (id < 0)
+                {
+                    MessageBox.Show("Ange ett positivt tal", "Information", MessageBoxButtons.OK);
+                }
+            }
+            else if (!int.TryParse(textBox3.Text, out int price) || price < 0)
+            {
+                MessageBox.Show("Ange ett pris i siffror", "Information", MessageBoxButtons.OK);
+            }
+            else if(!int.TryParse(textBox4.Text, out int amount) || amount < 0)
+            {
+                MessageBox.Show("Ange ett positivt antal i siffror", "Information", MessageBoxButtons.OK);
+            }
+            else if (textBox5.Text == "")
+            {
+                MessageBox.Show("Ange en leverantör", "Information", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if(!(List.exists(id, textBox1.Text, price, amount, textBox5.Text)))
+            {
+                    MessageBox.Show("Varan med varunumret finns redan, ange ett nytt", "Information", MessageBoxButtons.OK);
+                }
+                updateListBox();
+                filehandle.writeFile();
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -141,13 +159,31 @@ namespace mediastore
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
-            int.TryParse(textBox7.Text, out int antal);
-            List.leverans(textBox6.Text, antal);
-            updateListBox();
-            filehandle.writeFile();
-            textBox6.Text = "";
-            textBox7.Text = "";
+            if(textBox6.Text == "")
+            {
+                MessageBox.Show("Ange en leverantör", "Information", MessageBoxButtons.OK);
+            }
+            else if(!int.TryParse(textBox7.Text, out int antal))
+            {
+                MessageBox.Show("Ange ett antal varor som levererats", "Information", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if(!(List.leverans(textBox6.Text, antal))){
+                    MessageBox.Show("Leverantören finns inte, skapa en produkt först och registrera en leverantör", "Information", MessageBoxButtons.OK);
+                    textBox6.Text = "";
+                    textBox7.Text = "";
+                }
+                else
+                {
+                    //List.leverans(textBox6.Text, antal);
+                    updateListBox();
+                    filehandle.writeFile();
+                    textBox6.Text = "";
+                    textBox7.Text = "";
+                }
+            }
+            
 
 
         }
