@@ -9,7 +9,6 @@ namespace mediastore
 {
     class Filehandle
     {
-        
         public void writeFile()
         {
             List<Produkt> products = List.getList();
@@ -25,7 +24,6 @@ namespace mediastore
 
         public void readFile()
         {
-            //Idea from stackoverflow link to issue.
             List.clear();
             TextReader tr = new StreamReader("SavedList.txt");
             string r;

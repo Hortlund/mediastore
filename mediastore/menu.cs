@@ -17,14 +17,13 @@ namespace mediastore
             InitializeComponent();
         }
 
-        public static void runLager()
+        // Skapar 2 funktioner som låter mig skapa nya instanser av vy-klasserna lager och kassa.
+        public void runLager()
         {
-            //lager form;
             Application.Run(new lager());
         }
-        public static void runKassa()
+        public void runKassa()
         {
-            //kassa form;
             Application.Run(new kassa());
         }
 
@@ -32,10 +31,16 @@ namespace mediastore
         private void menu_Load(object sender, EventArgs e)
         {
             
-            
         }
 
-
+        /* Dessa funktioner körs när man klickar på någon av Lager eller Kassa knapparna
+         * och kör då funktionerna tidigare nämnda, men de instanserna körs i en ny tråd vilket låter mig stänga huvudmenyn och
+         * fortsätta programmet i de nya vyerna. På så vis kan bara 1 instans av vyerna vara igång samtidigt.
+         * 
+         * https://stackoverflow.com/questions/5201852/what-is-a-thread-really
+         * https://stackoverflow.com/questions/8457906/opening-a-new-form-closing-the-old-one-c-sharp
+         * https://docs.microsoft.com/en-us/dotnet/api/system.threading.thread?view=netframework-4.8
+         */
         private void lager_Click(object sender, EventArgs e)
         {
             System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(runLager));
@@ -49,6 +54,12 @@ namespace mediastore
             t.Start();
             this.Close();
 
+        }
+
+        // Avslutar applikationen via arkiv menyn
+        private void avslutaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

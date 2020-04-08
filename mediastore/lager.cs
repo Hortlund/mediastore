@@ -12,17 +12,14 @@ namespace mediastore
 {
     public partial class lager : Form
     {
-
-       
         Filehandle filehandle = new Filehandle();
         public lager()
         {
             InitializeComponent();
         }
 
-        public static void runMenu()
+        public void runMenu()
         {
-            //menu form;
             Application.Run(new menu());
         }
 
@@ -115,18 +112,10 @@ namespace mediastore
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-           
-
-            //List<Produkt> products = List.getList();
-            //listBox1.DataSource = null;
-            //DialogResult result = MessageBox.Show("Vill du verkligen ta bort produkten?", "Bekräftelse", MessageBoxButtons.YesNoCancel);
             Produkt r = ((Produkt)listBox1.SelectedItem);
             int amount = ((Produkt)listBox1.SelectedItem).amount;
             if (amount != 0)
             {
-
-            
-
                 DialogResult result = MessageBox.Show("Vill du verkligen ta bort produkten?", "Bekräftelse", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
@@ -142,7 +131,6 @@ namespace mediastore
                 }
             }
 
-            //listBox1.DataSource = products;
             listBox1.DisplayMember = "Name";
             label1.Text = "Produktnamn: ";
             label2.Text = "Varunummer: ";
@@ -151,10 +139,6 @@ namespace mediastore
             label10.Text = "Leverantör: ";
             updateListBox();
             filehandle.writeFile();
-
-            
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -176,7 +160,6 @@ namespace mediastore
                 }
                 else
                 {
-                    //List.leverans(textBox6.Text, antal);
                     updateListBox();
                     filehandle.writeFile();
                     textBox6.Text = "";
@@ -184,8 +167,6 @@ namespace mediastore
                 }
             }
             
-
-
         }
     }
 }

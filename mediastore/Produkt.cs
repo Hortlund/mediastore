@@ -8,34 +8,20 @@ namespace mediastore
 {
     class Produkt
     {
+        // Simpel get; set för alla attributer som produkten har i min lösning, härifrån skapas alla nya objekt som läggs i listorna.
         public string name { get; set; }
         public int id { get; set; }
         public int amount { get; set; }
         public int price { get; set; }
         public string supplier { get; set; }
 
-
-
-        /*private List<Produkt> products = new List<Produkt>();
-        public List<Produkt> Prods()
-        {
-            
-
-            return products;
-        }
-
-        public void addProduct(int id, string name, int price, int amount)
-        {
-            products.Add(new Produkt() { id = id, name = name, price = price, amount = amount });
-            
-        }
-
-        
-    */
+        /*Used for debugging purposes
         public override string ToString()
         {
+            
             return id +" "+ name + " " + price + " " + amount;
         }
+        */
 
 
     }

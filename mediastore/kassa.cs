@@ -12,7 +12,6 @@ namespace mediastore
 {
     public partial class kassa : Form
     {
-
         Filehandle filehandle = new Filehandle();
         public kassa()
         {
@@ -21,7 +20,6 @@ namespace mediastore
 
         public static void runMenu()
         {
-            //menu form;
             Application.Run(new menu());
         }
 
@@ -54,11 +52,6 @@ namespace mediastore
             listBox2.DataSource = null;
             listBox2.DataSource = shoppingcart;
             listBox2.DisplayMember = "Name";
-            foreach (Produkt aPart in shoppingcart)
-            {
-                Console.WriteLine(aPart);
-            }
-
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -194,7 +187,6 @@ namespace mediastore
                 MessageBox.Show("Köpet genomfört!", "Information", MessageBoxButtons.OK);
 
             }
-
 
         }
     }
