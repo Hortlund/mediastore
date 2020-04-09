@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="mediastore.Filehandle">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Filehandle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.kassa">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>eQAAAAEAACAAARECABCAAAACAEA4AAIAEHAIAYACAAA=</HashCode>
+      <FileName>kassa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.lager">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>eSAAAIEAASAAARGAABCAAABCIAA4AQgAEDAAAAACAAA=</HashCode>
+      <FileName>lager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.List">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAACAgCAAAAEAAAAAADAAAAQAAIAAQAABgACIAA=</HashCode>
+      <FileName>List.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.menu">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEAAgIgACAAAAAAAACAgAAiQCAAAQAAAAAABAACAAA=</HashCode>
+      <FileName>menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.Produkt">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAACAAAAAAAAEgAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Produkt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.Program">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.Properties.Resources">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mediastore.Properties.Settings">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
