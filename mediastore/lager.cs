@@ -12,6 +12,7 @@ namespace mediastore
 {
     public partial class lager : Form
     {
+        //Ny instans av filhanteringen.
         Filehandle filehandle = new Filehandle();
         public lager()
         {
@@ -27,10 +28,12 @@ namespace mediastore
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            //Läser in filen och upptaderar listboxen.
             filehandle.readFile();
             updateListBox();
         }
 
+        //Samma procedure som i huvudmenyn.
         private void huvudmenyToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -39,9 +42,10 @@ namespace mediastore
             this.Close();
         }
 
+        //Sätter texten till det valda objektets information.
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Generates a null reference Exception
+            //Genererar ett null reference exception. Efter som man inte valt något när den updateras.
             try
             {
                 label1.Text = "Produktnamn: " + ((Produkt)listBox1.SelectedItem).name;
@@ -56,6 +60,7 @@ namespace mediastore
             }
         }
 
+        //Uppdaterar listboxen vid änringar.
         private void updateListBox()
         {
             List<Produkt> products = List.getList();
@@ -71,6 +76,8 @@ namespace mediastore
             textBox5.Text = "";
         }
 
+        //En lång radda med kontroller som ser till att rätt information anges, om inte så informeras användaren om detta.
+        //Lägger annars till varan och uppdaterar listboxen och skriver till fil.
         private void button3_Click(object sender, EventArgs e)
         {
             
@@ -110,37 +117,53 @@ namespace mediastore
             }
         }
 
+        //Funktion för att ta bort en produkt.
         private void button1_Click_1(object sender, EventArgs e)
         {
+            //Skapar en referens till valda objektet och kollar så att lager status inte är noll, är det noll tas produkten bort direkt
+            //Är den inte noll så frågas använderen om de verkligen vill ta bort varan.
+            //Sedan så uppdateras listboxen och ändringarna skrivs till fil.
             Produkt r = ((Produkt)listBox1.SelectedItem);
-            int amount = ((Produkt)listBox1.SelectedItem).amount;
-            if (amount != 0)
+            if(r == null)
             {
-                DialogResult result = MessageBox.Show("Vill du verkligen ta bort produkten?", "Bekräftelse", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Yes)
+
+            }else
+            {
+                int amount = ((Produkt)listBox1.SelectedItem).amount;
+                if (amount != 0)
+                {
+                    DialogResult result = MessageBox.Show("Vill du verkligen ta bort produkten?", "Bekräftelse", MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Yes)
+                    {
+                        List.remove(r);
+                    }
+                    else if (result == DialogResult.No)
+                    {
+
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+
+                    }
+                }
+                else if (amount == 0)
                 {
                     List.remove(r);
                 }
-                else if (result == DialogResult.No)
-                {
 
-                }
-                else if (result == DialogResult.Cancel)
-                {
-
-                }
+                listBox1.DisplayMember = "Name";
+                label1.Text = "Produktnamn: ";
+                label2.Text = "Varunummer: ";
+                label3.Text = "Pris: ";
+                label4.Text = "Antal: ";
+                label10.Text = "Leverantör: ";
+                updateListBox();
+                filehandle.writeFile();
             }
-
-            listBox1.DisplayMember = "Name";
-            label1.Text = "Produktnamn: ";
-            label2.Text = "Varunummer: ";
-            label3.Text = "Pris: ";
-            label4.Text = "Antal: ";
-            label10.Text = "Leverantör: ";
-            updateListBox();
-            filehandle.writeFile();
+            
         }
 
+        //Funktion för att lägga till levereans från grossist. Med tillhörande kontroller för input.
         private void button2_Click(object sender, EventArgs e)
         {
             if(textBox6.Text == "")
@@ -153,6 +176,7 @@ namespace mediastore
             }
             else
             {
+                //Finns inte leverantören så får man en notis om det att lägga till en.
                 if(!(List.leverans(textBox6.Text, antal))){
                     MessageBox.Show("Leverantören finns inte, skapa en produkt först och registrera en leverantör", "Information", MessageBoxButtons.OK);
                     textBox6.Text = "";
@@ -160,6 +184,7 @@ namespace mediastore
                 }
                 else
                 {
+                    //Annars så läggs varorna till och antalet ökar på alla med samma leverantör.
                     updateListBox();
                     filehandle.writeFile();
                     textBox6.Text = "";
